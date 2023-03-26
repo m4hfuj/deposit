@@ -1,0 +1,42 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+{% include 'client-tabs.html' %}
+
+
+<div class="reg-boxes">
+    <table class='table text-center text-middle'>
+        <thead>
+            <tr class="table-primary">
+                <th scope='col'>Box Number</th>
+                <th scope='col'>Visit Date</th>
+                <th scope='col'>Check in Time</th>
+                <th scope='col'>Check out Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for v in visits %}
+            <tr>
+                <td scope='col'> {{v.box.box_number}} </td>
+                <td scope='col'> {{v.visit_date}} </td>
+                <td scope='col'> {{v.check_in}} </td>
+                <td scope='col'> {{v.check_out}} </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+    <a href="{% url 'add-visitation' client.id  %}" class="btn btn-primary"> + Record new visitation </a>
+</div>
+
+
+
+<style>
+    .reg-boxes{
+        width: 100%;
+    }
+</style>
+
+
+{% endblock %}

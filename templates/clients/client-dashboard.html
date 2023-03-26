@@ -1,0 +1,61 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+{% include 'client-tabs.html' %}
+
+<div class="reg-boxes">
+    <table class='table text-center align-middle'>
+        <thead>
+            <tr class="table-primary">
+                <th scope='col'>Box Number</th>
+                <th scope='col'>Rent / Month</th>
+                <th scope='col'>Reg Date</th>
+                <th scope='col'>Expiry Date</th>
+                <th scope='col'>Duration</th>
+                <th scope='col'>Billings</th>
+                <th scope='col'></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t, box_rent, expiry_date in boxes %}
+            <tr>
+                <td scope='col'> {{t.box}} </td>
+                <td scope='col'><i> $ {{box_rent}} </i></td>
+                <td scope='col'> {{t.registration_date}} </td>
+                <td scope='col'> {{expiry_date}} </td>
+                <td scope='col'> {{t.rental_duration}} months </td>
+                <td scope='col'><b>$ {{t.billing_amount}} </b></td>
+                <td scope='col'>
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <input name="transaction-id" type="text" value="{{t.id}}" hidden="True">
+                        <input name="box-id" type="text" value="{{t.box.id}}" hidden="True">
+                        <button type="submit" class="btn btn-danger"> Unregister </button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'register-box' client.id  %}" class="btn btn-primary"> + Register a new box </a>
+</div>
+
+
+
+<style>
+    .text-right{
+        display: flex;
+        justify-content: right;
+    }
+    .text-left{
+        display: flex;
+        justify-content: left;
+    }
+    .reg-boxes{
+        width: 100%;
+    }
+</style>
+
+
+{% endblock %}

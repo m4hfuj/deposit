@@ -1,0 +1,59 @@
+{% extends 'home.html' %}
+{% block content %}
+
+<div class="one">
+    <h2>Visitation Form</h2>
+    <form method="POST" action="">
+        {% csrf_token %}
+
+        <div class="col-md-12">
+            <label for="client-name" class="form-label"> Client Name </label>
+            <input type="text" name="client-name" class="form-control" value="{{client.name}}">
+        </div>
+
+        
+        <div class="col-md-12">
+            <label for="box-number" class="form-label"> Box Number </label>
+            <select id="box-number" class="form-select" name="box-number">
+                <option selected> --------- </option>
+                {% for box in boxes %}
+                <option value="{{box.box_number}}">{{box.box_number}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+
+        <div class="col-md-12">
+            <label for="visit-date" class="form-label"> Visit Date </label>
+            <input type="date" name="visit-date" class="form-control" id="visit-date">
+        </div>
+
+        <div class="col-md-12">
+            <label for="check-in" class="form-label"> Check In </label>
+            <input type="time" name="check-in" class="form-control" id="check-in">
+        </div>
+
+        <div class="col-md-12">
+            <label for="check-out" class="form-label"> Check Out </label>
+            <input type="time" name="check-out" class="form-control" id="check-out">
+        </div>
+        
+        <button type="submit" class="btn btn-primary"> Submit </button>
+    </form>
+</div>
+
+
+<style>
+    .one{
+        width: 40%;
+    }
+    .one label{
+        margin-top: 30px;
+    }
+    .one button{
+        margin-top: 40px;
+    }
+</style>
+
+
+{% endblock %}

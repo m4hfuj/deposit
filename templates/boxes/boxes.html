@@ -1,0 +1,53 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+<h2>List of available Boxes</h2>
+
+
+<table class='table table-bordered text-center align-middle'>
+    <thead>
+        <tr class="table-primary">
+            <th scope='col'>Box Number</th>
+            <th scope='col'>Box Size</th>
+            <th scope='col'>Box Rent / Month</th>
+            <th scope='col'>Availability</th>
+            <!-- <th scope='col'>Box History</th> -->
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for box, box_rent, tr_color in boxes %}
+
+        <tr>
+            <!-- <th scope='col'>{{box.box_number}}</th> -->
+            <td scope='col'><a href='{% url "box-history" box.id %}' class='btn btn-secondary w-25'> {{box.box_number}} </a></td>
+            <td scope='col'>{{box.size}}</td>
+
+            <td scope='col'>$ {{box_rent}}</td>
+
+            {% if box.available == True %}
+            <th scope='col' class="text{{tr_color}}"> Available </th>
+            {% else %}
+            <th scope='col' class="text{{tr_color}}"> Not Available </th>
+            {% endif %}
+
+            <!-- <td scope='col'><a href='{% url "box-history" box.id %}' class='btn btn-outline-success'> a </a></td> -->
+
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+
+<style>
+    table{
+        margin-top: 30px;
+    }
+</style>
+
+{% endblock %}
+
+
+
+<!-- '{% url "box" box.id %}' -->

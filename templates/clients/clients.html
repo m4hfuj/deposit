@@ -1,0 +1,122 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+<!-- <div class="cont">
+
+<h2>List of Clients</h2>
+
+
+<table class='table table-bordered text-center align-middle'>
+    <thead>
+        <tr class="table-primary">
+            <th scope='col'> Profile Picture </th>
+            <th scope='col'> Client Name </th>
+            <th scope='col'> Email Address </th>
+            <th scope='col'> Phone Number </th>
+            <th scope='col'> Client ID </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for client in clients %}
+        <tr>
+
+            <td scope='col'>
+                    <img src="{{client.pic_url}}" alt="avatar"
+                        class="rounded img-fluid" style="width: 50px; height: 60px; object-fit: cover;">
+            </td>
+
+            <td scope='col'> {{client.name}} </td>
+            <td scope='col'> {{client.email}} </td>
+            <td scope='col'> {{client.phone}} </td>
+            <td scope='col'> <a href='{% url "client-profile" client.id %}' class='btn btn-secondary w-75'><b> {{client.client_id}} </b></a> </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'register-client' %}" class="btn btn-primary"> + New Client</a>
+
+</div> -->
+
+
+
+
+<section class="intro">
+    <h2>List of Clients</h2>
+
+    <div class="table-responsive bg-white">
+        <table class="table mb-0 align-middle">
+            <thead>
+                <tr>
+                    <!-- <th scope='col'> Profile Picture </th> -->
+                    <th scope='col'> Client ID </th>
+                    <th scope='col'> Client Name </th>
+                    <th scope='col'> Email Address </th>
+                    <th scope='col'> Phone Number </th>
+                    <th scope='col'> Age </th>
+                    <th scope='col'> Home Address </th>
+                    <th scope='col'>  </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for client, age in clients_ages %}
+                <tr>
+                    <th scope='col' style="color: #666666;"> {{client.client_id}} </th>
+                    <th scope="row" style="color: #666666;"> {{client.name}} </th>
+
+                    <!-- <td scope='col'>
+                        <img src="{{client.pic_url}}" alt="avatar" class="rounded img-fluid"
+                            style="width: 50px; height: 60px; object-fit: cover;">
+                    </td> -->
+
+                    <td scope='col'> {{client.email}} </td>
+                    <td scope='col'> {{client.phone}} </td>
+                    <td scope='col'> {{age}} </td>
+                    <td scope='col' class="text-muted mb-4 w-25"> {{client.address}} </td>
+                    <td scope='col'> <a href='{% url "client-profile" client.id %}' class='btn btn-secondary w-100'><b>
+                                Details </b></a> </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+        
+        <a href="{% url 'register-client' %}" class="add-client btn btn-primary"> + New Client</a>
+        
+    </div>
+    
+</section>
+
+
+
+<style>
+    .cont {
+        width: 100%;
+    }
+
+    table {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .add-client{
+        margin-top: 20px;
+        margin-bottom: 50px;
+    }
+
+    table td,
+    table th {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    tbody td {
+        font-weight: 500;
+        color: #999999;
+    }
+</style>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'home.html' %}
+
+{% block content %}
+
+{% include 'client-tabs.html' %}
+
+<table class='table text-center text-middle'>
+    <thead>
+        <tr class="table-primary">
+            <th scope='col'>Box Number</th>
+            <th scope='col'>Rent / Month</th>
+            <th scope='col'>Reg Date</th>
+            <th scope='col'>Expiry Date</th>
+            <th scope='col'>Duration</th>
+            <th scope='col'>Billings</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for t, box_rent, expiry_date in boxes %}
+        <tr>
+            <td scope='col'> {{t.box}} </td>
+            <td scope='col'><i> $ {{box_rent}} </i></td>
+            <td scope='col'> {{t.registration_date}} </td>
+            <td scope='col'> {{expiry_date}} </td>
+            <td scope='col'> {{t.rental_duration}} months </td>
+            <td scope='col'><b>$ {{t.billing_amount}} </b></td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+
+
+<style>
+    .del{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+    }
+    .del a,
+    .del a:hover{
+        color: white;
+        display: flex;
+        align-items: center;
+    }
+</style>
+
+
+
+{% endblock %}

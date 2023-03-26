@@ -1,0 +1,118 @@
+{% extends 'home.html' %}
+{% block content %}
+
+<h2>({{client.client_id}}) {{client.name}}</h2>
+
+<h4>List of available Boxes</h4>
+
+<div class="container-rb">
+    
+    <div class="container-table">
+        
+        <table class='table table-striped text-center'>
+            <thead>
+                <tr class="bg-secondary text-light">
+                    <th scope='col'>Box Number</th>
+                    <th scope='col'>Rent</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for box in boxes %}
+                <tr>
+                    <th scope='col' name="box_number">{{box.box_number}}</th>
+
+                    {% for box_rent in box_rents %}
+                        {% if forloop.counter == forloop.parentloop.counter %}
+                            <td scope='col'>$ {{ box_rent }}</td>
+                        {% endif %}
+                    {% endfor %}
+                    
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="container-form">
+
+        <form method="POST" action="">
+            {% csrf_token %}           
+
+            <div class="input-group mb-3">
+                <label for="box-number" class="btn btn-secondary" type="button">Box ID</label>
+                <select class="form-select" name="box-number">
+                    <option selected> -------- </option>
+                    {% for box in boxes %}
+                    <option value="{{box.box_number}}">
+                        <td scope='col'> {{box.box_number}} </td>
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <label class="btn btn-secondary"> Rental Duration </label>
+                <select class="form-select" name="rental-duration">
+                    <option selected> -------- </option>
+                    <option value="1"> 1 Month </option>
+                    <option value="2"> 2 Months </option>
+                    <option value="3"> 3 Months </option>
+                    <option value="4"> 4 Months </option>
+                    <option value="5"> 5 Months </option>
+                    <option value="6"> 6 Months </option>
+                    <option value="7"> 7 Months </option>
+                    <option value="8"> 8 Months </option>
+                    <option value="9"> 9 Months </option>
+                    <option value="10"> 10 Months </option>
+                    <option value="11"> 11 Months </option>
+                    <option value="12"> 1 Year </option>
+                    <option value="24"> 2 Years </option>
+                    <option value="36"> 3 Years </option>
+                </select>
+            </div>
+            
+            
+            <div class="mb-3 row">
+                <div class="col-sm-12">
+                    <!-- <input type="submit" class="form-control btn-success"> -->
+                    <button class="form-control btn btn-primary" type="submit">Submit</button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<style>
+    h4{
+        margin-top: 30px;
+        /* transform: translateX(-300px); */
+    }
+    .container-table{
+        /* background: rebeccapurple; */
+        width: 40%;
+        height: 500px;
+        overflow: scroll;
+    }
+    .container-form{
+        /* background: rebeccapurple; */
+        width: 50%;
+    }
+    .container-rb{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+    form label{
+        width: 150px;
+    }
+
+</style>
+
+{% endblock %}

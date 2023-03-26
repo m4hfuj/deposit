@@ -1,0 +1,28 @@
+{% extends 'home.html' %}
+{% block content %}
+
+<h2> Box No: {{box.box_number}} </h2>
+
+
+<table class='table table-bordered text-center align-middle'>
+    <thead>
+        <tr class="table-primary">
+            <th scope='col'>Box Number</th>
+            <th scope='col'>Registered to</th>
+            <th scope='col'>Reg Date</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for t in transactions %}
+        <tr>
+            <th scope='col'> {{t.box.box_number}} </th>
+            <td scope='col'><a href="{% url 'client-profile' t.client.id %}"> <b> {{t.client.name}} </b></a></td>
+            <td scope='col'> {{t.registration_date}} </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}

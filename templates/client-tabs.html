@@ -1,0 +1,51 @@
+{% block content %}
+
+<div class="tabs nav-tabs">
+
+    <div class="del">
+        <h2 class="client-name"> ({{client.client_id}}) {{client.name}} </h2>
+        <!-- <a class="nav-link btn btn-danger" href='{% url "confirm-delete" client.id %}'> Delete Client </a> -->
+
+
+    </div>
+
+    <ul class="nav">
+        <li class="nav-item">    
+            <a id="reg-boxes" class="nav-link text-secondary" href='{% url "client-profile" client.id %}'><b> Client Profile </b></a>
+        </li>
+        <li class="nav-item">    
+            <a id="reg-boxes" class="nav-link text-secondary" href='{% url "client-dashboard" client.id %}'><b> Registered Boxes </b></a>
+        </li>
+        <li class="nav-item">    
+            <a id="reg-boxes" class="nav-link text-secondary" href='{% url "visitations" client.id %}'><b> Visitations </b></a>
+        </li>
+        <li class="nav-item">    
+            <a id="reg-histo" class="nav-link text-secondary" href="{% url 'remove-box' client.id  %}"><b> Registration History </b></a>
+        </li>
+    </ul>
+
+</div>
+
+
+<style>
+    .tabs{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .del{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: 30px;
+    }
+    .del a,
+    .del a:hover{
+        color: white;
+        display: flex;
+        align-items: center;
+    }
+</style>
+
+{% endblock %}
