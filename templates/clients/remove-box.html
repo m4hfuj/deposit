@@ -13,6 +13,7 @@
             <th scope='col'>Expiry Date</th>
             <th scope='col'>Duration</th>
             <th scope='col'>Billings</th>
+            <th scope='col'>Mail</th>
         </tr>
     </thead>
     <tbody>
@@ -24,6 +25,7 @@
             <td scope='col'> {{expiry_date}} </td>
             <td scope='col'> {{t.rental_duration}} months </td>
             <td scope='col'><b>$ {{t.billing_amount}} </b></td>
+            <td scope='col'><a href="#" class="text-danger">Send Mail</a></td>
         </tr>
         {% endfor %}
 
