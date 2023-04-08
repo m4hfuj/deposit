@@ -2,47 +2,6 @@
 
 {% block content %}
 
-<!-- <div class="cont">
-
-<h2>List of Clients</h2>
-
-
-<table class='table table-bordered text-center align-middle'>
-    <thead>
-        <tr class="table-primary">
-            <th scope='col'> Profile Picture </th>
-            <th scope='col'> Client Name </th>
-            <th scope='col'> Email Address </th>
-            <th scope='col'> Phone Number </th>
-            <th scope='col'> Client ID </th>
-        </tr>
-    </thead>
-
-    <tbody>
-        {% for client in clients %}
-        <tr>
-
-            <td scope='col'>
-                    <img src="{{client.pic_url}}" alt="avatar"
-                        class="rounded img-fluid" style="width: 50px; height: 60px; object-fit: cover;">
-            </td>
-
-            <td scope='col'> {{client.name}} </td>
-            <td scope='col'> {{client.email}} </td>
-            <td scope='col'> {{client.phone}} </td>
-            <td scope='col'> <a href='{% url "client-profile" client.id %}' class='btn btn-secondary w-75'><b> {{client.client_id}} </b></a> </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
-<a href="{% url 'register-client' %}" class="btn btn-primary"> + New Client</a>
-
-</div> -->
-
-
-
-
 <section class="intro">
     <h2>List of Clients</h2>
 
